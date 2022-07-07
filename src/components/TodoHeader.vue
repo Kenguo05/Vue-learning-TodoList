@@ -16,6 +16,7 @@ export default {
                 done: false
             }
             this.recieve(todo)
+            event.target.value = ''
         }
     },
     props:['recieve']
