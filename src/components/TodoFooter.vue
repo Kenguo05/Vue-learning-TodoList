@@ -4,15 +4,21 @@
         <input type="checkbox">
     </label>
     <span>
-        <span>Completed 0</span> / xxx
+        <span>Completed {{ numOfCompleted }}</span> / {{ numOfAll }}
     </span>
-    <button class="btn btn-danger">Clear all</button>
+    <button class="btn btn-danger" @click="clearAll">Clear all Completed</button>
   </div>
 </template>
 
 <script>
 export default {
-    name:'TodoFooter'
+    name:'TodoFooter',
+    props:['numOfCompleted','numOfAll','clear'],
+    methods:{
+        clearAll(){
+            this.clear()
+        }
+    }
 }
 </script>
 

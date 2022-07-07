@@ -4,7 +4,7 @@
       <div class="todo-wrap">
         <TodoHeader :recieve="recieve"/>
         <TodoList :todoList="todo" :check="check" :remove="remove"/>
-        <TodoFooter/>
+        <TodoFooter :numOfCompleted="numOfCompleted" :numOfAll="todo.length" :clear="clearAll"/>
       </div>
     </div>
   </div>
@@ -38,6 +38,26 @@ export default {
       this.todo = this.todo.filter((t)=>{
         return t.id !== id
       })
+    },
+    clearAll(){
+      this.todo = this.todo.filter((t)=>{
+        return t.done === false
+      })
+    }
+  },
+  computed:{
+    numOfCompleted(){
+      if (this.todo.length === 0) {
+        return 0
+      } else {
+        let num = 0
+        for (let index = 0; index < this.todo.length; index++) {
+          if (this.todo[index].done === true) {
+            num++
+          }
+        }
+        return num
+      }
     }
   },
   components: {
