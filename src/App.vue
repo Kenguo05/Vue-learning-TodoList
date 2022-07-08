@@ -18,9 +18,7 @@ export default {
   name: 'App',
   data(){
     return {
-      todo:[
-
-      ]
+      todo:JSON.parse(localStorage.getItem('todo')) || []
     }
   },
   methods:{
@@ -57,6 +55,14 @@ export default {
           }
         }
         return num
+      }
+    }
+  },
+  watch:{
+    todo:{
+      deep:true,
+      handler(value){
+        localStorage.setItem('todo', JSON.stringify(value))
       }
     }
   },
