@@ -10,16 +10,16 @@ export default {
     name:'TodoHeader',
     methods:{
         add(event){
+            if (!event.target.value.trim()) alert("The input can't be empty!")
             const todo = {
                 id: nanoid(),
                 title: event.target.value,
                 done: false
             }
-            this.recieve(todo)
+            this.$emit('recieve', todo)
             event.target.value = ''
         }
     },
-    props:['recieve']
 }
 </script>
 

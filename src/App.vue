@@ -2,9 +2,9 @@
   <div id="app">
     <div class="todo-container">
       <div class="todo-wrap">
-        <TodoHeader :recieve="recieve"/>
+        <TodoHeader @recieve="recieve"/>
         <TodoList :todoList="todo" :check="check" :remove="remove"/>
-        <TodoFooter :numOfCompleted="numOfCompleted" :numOfAll="todo.length" :clear="clearAll"/>
+        <TodoFooter :numOfCompleted="numOfCompleted" :numOfAll="todo.length" @clear="clearAll"/>
       </div>
     </div>
   </div>

@@ -13,10 +13,10 @@
 <script>
 export default {
     name:'TodoFooter',
-    props:['numOfCompleted','numOfAll','clear'],
+    props:['numOfCompleted','numOfAll'],
     methods:{
         clearAll(){
-            this.clear()
+            this.$emit('clear')
         }
     }
 }
