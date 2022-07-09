@@ -3,7 +3,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <TodoHeader @recieve="recieve"/>
-        <TodoList :todoList="todo" :check="check" :remove="remove"/>
+        <TodoList :todoList="todo"/>
         <TodoFooter :numOfCompleted="numOfCompleted" :numOfAll="todo.length" @clear="clearAll"/>
       </div>
     </div>
@@ -70,6 +70,14 @@ export default {
     TodoHeader,
     TodoList,
     TodoFooter
+  },
+  mounted(){
+    this.$bus.$on('check', this.check)
+    this.$bus.$on('remove', this.remove)
+  },
+  beforeDestroy(){
+    this.$bus.$off('check')
+    this.$bus.$off('remove')
   }
 }
 </script>

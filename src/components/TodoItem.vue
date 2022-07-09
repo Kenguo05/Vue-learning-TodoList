@@ -11,14 +11,14 @@
 <script>
 export default {
     name:'TodoItem',
-    props:['todo','check','removeItem'],
+    props:['todo'],
     methods:{
         toggle(id){
-            this.check(id)
+            this.$bus.$emit('check', id)
         },
         remove(id){
             if (confirm('Are you sure to delete?')) {
-                this.removeItem(id)
+                this.$bus.$emit('remove', id)
             }
         }
     }
